@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  socewebcrawler:
+    image: indicadorescalidad:stage-01
+    container_name: indicadores_stage
+    restart: always
+    #volumes:
+    #  - type: bind
+       #source: /data/
+       #target: /data/
+    networks:
+      - app_net
+networks:
+  app_net:
+    ipam:
+      driver: default
