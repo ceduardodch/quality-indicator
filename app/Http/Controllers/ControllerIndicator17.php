@@ -16,7 +16,7 @@ class ControllerIndicator17 extends Controller
         $mindate = filter_var($request->mindate, FILTER_SANITIZE_STRING);
         $procedimiento = filter_var($request->procedimiento, FILTER_SANITIZE_STRING);
         
-        $detailindicador17_1 = Indicador16::select(
+        $detailindicador17_1 = Indicador17::select(
         DB::raw('json_build_object(yearmonth, json_agg(ROUND(monto_adjudicado,2))) as data'))
         ->groupBy('yearmonth')
         ->whereBetween('yearmonth', [$mindate, $maxdate])
