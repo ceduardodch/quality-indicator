@@ -21,7 +21,7 @@ class ControllerIndicator3 extends Controller
 
         $detailindicador3_1 = Indicador3::select(
         DB::raw('year||\'.\'||month as yearmonth'), 
-        DB::raw('ROUND(AVG(porcentaje*100)::numeric,8) as porcentaje'))
+        DB::raw('ROUND(AVG(porcentaje*100)::numeric,2) as porcentaje'))
         ->groupBy('year', 'month')
         ->whereBetween('fecha', [$mindate, $maxdate])
         ->whereIn('region', $region)
