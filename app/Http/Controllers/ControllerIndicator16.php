@@ -26,7 +26,7 @@ class ControllerIndicator16 extends Controller
             $value1 =  str_replace(array("{", "}", "\"","\\", '"'), "", json_encode($value['data']));
              array_push($indicador16f ,$value1);
         }
-        $json['chartData'] = $indicador16f;
+        $json['chartData'] = $;
         $indicador16_1 = json_encode($json,  JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); 
 
         return $indicador16_1;

@@ -28,7 +28,7 @@ class ControllerIndicator13 extends Controller
         ->orderBy('register_number', 'desc')
         ->limit(self::TOP_SIZE)
         ->get();
-        $json['indicador13_1'] = $detailindicador13_1;
+        $json['chartData'] = $detailindicador13_1;
         $indicador13_1 = json_encode($json,  JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); 
 
         $detailindicador13_2 = Indicador13::select(
@@ -38,7 +38,7 @@ class ControllerIndicator13 extends Controller
             ->whereBetween('fecha', [$mindate, $maxdate])
             ->whereIn('region', $region)
             ->get();
-        $json['indicador13_2'] = $detailindicador13_2;
+        $json['colorMapData'] = $detailindicador13_2;
         $indicador13_2 = json_encode($json,  JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); 
 
         $indicador13 = json_encode(

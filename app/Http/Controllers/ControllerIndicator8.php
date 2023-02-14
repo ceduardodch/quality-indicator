@@ -29,7 +29,7 @@ class ControllerIndicator8 extends Controller
         ->orderBy('register_number', 'desc')
         ->limit(self::TOP_SIZE)
         ->get();
-        $json['indicador8_1'] = $detailindicador8_1;
+        $json['chartData'] = $detailindicador8_1;
         $indicador8_1 = json_encode($json,  JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); 
 
         $detailindicador8_2 = Indicador8::select(
@@ -40,7 +40,7 @@ class ControllerIndicator8 extends Controller
             ->where('procedimiento', $procedimiento)
             ->whereIn('region', $region)
             ->get();
-        $json['indicador8_2'] = $detailindicador8_2;
+        $json['colorMapData'] = $detailindicador8_2;
         $indicador8_2 = json_encode($json,  JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); 
 
         $indicador8 = json_encode(

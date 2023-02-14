@@ -27,7 +27,7 @@ class ControllerIndicator4 extends Controller
         ->whereIn('region', $region)
         ->where('procedimiento', $procedimiento)
         ->get();
-        $json['indicador4_1'] = $detailindicador4_1;
+        $json['chartData'] = $detailindicador4_1;
         $indicador4_1 = json_encode($json,  JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); 
 
         $detailindicador4_2 = Indicador4::select(
@@ -38,7 +38,7 @@ class ControllerIndicator4 extends Controller
             ->whereIn('region', $region)
             ->where('procedimiento', $procedimiento)
             ->get();
-        $json['indicador4_2'] = $detailindicador4_2;
+        $json['colorMapData'] = $detailindicador4_2;
         $indicador4_2 = json_encode($json,  JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); 
 
         $indicador4 = json_encode(
