@@ -11,8 +11,6 @@ class ControllerIndicator16 extends Controller
 
     public function index(Request $request)
     {
-       
-        
         $maxdate = filter_var($request->maxdate, FILTER_SANITIZE_STRING);
         $mindate = filter_var($request->mindate, FILTER_SANITIZE_STRING);
         $procedimiento = filter_var($request->procedimiento, FILTER_SANITIZE_STRING);
@@ -29,5 +27,6 @@ class ControllerIndicator16 extends Controller
              array_push($indicador16f ,$value1);
         }
         return $indicador16f;
+        
     }
 }

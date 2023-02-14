@@ -1,0 +1,5 @@
+docker build . --file docker/Dockerfile --tag indicadorescalidad:stage-01
+
+ docker images
+
+ 
