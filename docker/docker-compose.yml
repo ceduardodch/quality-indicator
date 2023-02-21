@@ -1,17 +1,32 @@
-version: '3.4'
-
+version: "3.7"
 services:
-  socewebcrawler:
-    image: indicadorescalidad:stage-01
-    container_name: indicadores_stage
-    restart: always
-    #volumes:
-    #  - type: bind
-       #source: /data/
-       #target: /data/
+  app:
+    build:
+      args:
+        user: sammy
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: indicadorlist
+    container_name: indicadorlist-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
     networks:
-      - app_net
+      - indicadorlist
+  nginx:
+    image: nginx:alpine
+    container_name: indicadorlist-nginx
+    restart: unless-stopped
+    ports:
+      - 8000:80
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d/
+    networks:
+      - indicadorlist
+
 networks:
-  app_net:
-    ipam:
-      driver: default
+  travellist:
+    driver: bridge

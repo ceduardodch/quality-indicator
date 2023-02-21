@@ -59,6 +59,7 @@ Route::get('indicador14', [ControllerIndicator14::class, 'index']);
 Route::get('indicador15', [ControllerIndicator15::class, 'index']);
 Route::get('indicador16', [ControllerIndicator16::class, 'index']);
 Route::get('indicador17', [ControllerIndicator17::class, 'index']);
+Route::get('indicador1/export/', [ControllerIndicator1::class, 'export']);
 
 //Route::get('download', [FrontController::class, 'get_download']);
 

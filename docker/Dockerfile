@@ -1,4 +1,4 @@
-FROM php:8.1-fpm
+FROM php:8.2-fpm
 
 # Set working directory
 WORKDIR /var/www
@@ -26,6 +26,10 @@ RUN apt-get update && apt-get install -y \
     libmemcached-dev \
     nginx
 
+RUN apt-get install -y libpq-dev \
+    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
+    && docker-php-ext-install pdo pdo_pgsql pgsql
+
 # Install supervisor
 RUN apt-get install -y supervisor
 
@@ -42,12 +46,8 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 # Copy code to /var/www
 COPY --chown=www:www-data . /var/www
 
-
 # add root to www group
 RUN chmod -R ug+w /var/www/storage
-RUN chmod 777 -R storage
-
-
 
 # Copy nginx/php/supervisor configs
 RUN cp docker/supervisor.conf /etc/supervisord.conf
@@ -62,5 +62,5 @@ RUN touch /var/log/php/errors.log && chmod 777 /var/log/php/errors.log
 RUN composer install --optimize-autoloader --no-dev
 RUN chmod +x /var/www/docker/run.sh
 
-EXPOSE 80
+EXPOSE 8000
 ENTRYPOINT ["/var/www/docker/run.sh"]

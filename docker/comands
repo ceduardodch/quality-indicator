@@ -1,5 +1,7 @@
-docker build . --file docker/Dockerfile --tag indicadorescalidad:stage-01
+docker build . --file docker/Dockerfile --tag indicadoreslist
 
  docker images
+
+ docker run -d -p 8000:8000 indicadorlist:latest
 
  
