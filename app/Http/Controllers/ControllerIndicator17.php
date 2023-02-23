@@ -12,6 +12,11 @@ class ControllerIndicator17 extends Controller
 
     public function index(Request $request)
     {
+
+
+
+
+
         $maxdate = filter_var($request->maxdate, FILTER_SANITIZE_STRING);
         $mindate = filter_var($request->mindate, FILTER_SANITIZE_STRING);
         $procedimiento = filter_var($request->procedimiento, FILTER_SANITIZE_STRING);
@@ -24,13 +29,15 @@ class ControllerIndicator17 extends Controller
         ->get();
         $indicador17f=array();
         foreach ($detailindicador17_1 as $key => $value) {
-            $value1 =  str_replace(array("{", "}", "\"","\\", '"'), "", json_encode($value['data']));
+
+            $value1 = json_decode(json_encode($value['data']),true);  //json_decode($value['data']);
              array_push($indicador17f ,$value1);
         }
         $json['chartData'] = $indicador17f;
         $indicador17_1 = json_encode($json,  JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); 
 
         return $indicador17_1;
+
         
     }
 }
