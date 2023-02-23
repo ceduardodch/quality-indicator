@@ -23,7 +23,7 @@ class ControllerIndicator15 extends Controller
 
         $detailindicador15_1 = Indicador15::select(
         DB::raw('year||\'.\'||month as yearmonth'), 
-        DB::raw('ROUND(SUM(variabilidad),2) as variabilidad'))
+        DB::raw('ROUND(median(variabilidad),2) as variabilidad'))
         ->groupBy('year', 'month')
         ->whereBetween('fecha', [$mindate, $maxdate])
         ->whereIn('region', $region)
@@ -34,7 +34,7 @@ class ControllerIndicator15 extends Controller
 
         $detailindicador15_2 = Indicador15::select(
             DB::raw('region'), 
-            DB::raw('ROUND(SUM(variabilidad),2) as variabilidad'))
+            DB::raw('ROUND(median(variabilidad),2) as variabilidad'))
             ->groupBy('region')
             ->whereBetween('fecha', [$mindate, $maxdate])
             ->whereIn('region', $region)
