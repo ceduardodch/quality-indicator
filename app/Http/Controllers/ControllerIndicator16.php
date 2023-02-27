@@ -24,7 +24,7 @@ class ControllerIndicator16 extends Controller
         $indicador16f=array();
         foreach ($detailindicador16_1 as $key => $value) {
 
-            $value1 = json_decode(json_encode($value['data']),true);
+            $value1 = json_decode($value['data']);
              array_push($indicador16f ,$value1);
         }
         $json['chartData'] = $indicador16f;
