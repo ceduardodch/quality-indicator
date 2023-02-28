@@ -23,7 +23,7 @@ class ControllerIndicator11 extends Controller
 
         $detailindicador11_1 = Indicador11::select(
         DB::raw('year||\'.\'||month as yearmonth'), 
-        DB::raw('COUNT(amount_less_than_0_5) as register_number'))
+        DB::raw('SUM(amount_less_than_0_5) as register_number'))
         ->groupBy('year', 'month')
         ->whereBetween('fecha', [$mindate, $maxdate])
         ->whereIn('region', $region)
@@ -35,7 +35,7 @@ class ControllerIndicator11 extends Controller
 
         $detailindicador11_2 = Indicador11::select(
             DB::raw('region'), 
-            DB::raw('COUNT(amount_less_than_0_5) as register_number'))
+            DB::raw('SUM(amount_less_than_0_5) as register_number'))
             ->groupBy('region')
             ->whereBetween('fecha', [$mindate, $maxdate])
             ->whereIn('region', $region)
