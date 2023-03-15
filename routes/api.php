@@ -21,18 +21,6 @@ use App\Http\Controllers\ControllerIndicator16;
 use App\Http\Controllers\ControllerIndicator17;
 
 
-
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -40,9 +28,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('indicador1', [ControllerIndicator1::class, 'index']);
-
-//Route::get('indicador1download', [ControllerIndicator1::class, 'exportExcel']);
-
 Route::get('indicador2', [ControllerIndicator2::class, 'index']);
 Route::get('indicador3', [ControllerIndicator3::class, 'index']);
 Route::get('indicador4', [ControllerIndicator4::class, 'index']);
@@ -60,8 +45,5 @@ Route::get('indicador15', [ControllerIndicator15::class, 'index']);
 Route::get('indicador16', [ControllerIndicator16::class, 'index']);
 Route::get('indicador17', [ControllerIndicator17::class, 'index']);
 Route::get('indicador1/export/', [ControllerIndicator1::class, 'export']);
-
-//Route::get('download', [FrontController::class, 'get_download']);
-
 
 

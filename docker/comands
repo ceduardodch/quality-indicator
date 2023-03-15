@@ -2,6 +2,5 @@ docker build . --file docker/Dockerfile --tag indicadoreslist
 
  docker images
 
- docker run -d -p 8000:8000 indicadorlist:latest
-
+docker run --rm -d -p 8000:8000/tcp -p 9000:9000/tcp indicadoreslist:latest
  
