@@ -20,7 +20,7 @@ class ControllerIndicator17 extends Controller
         $maxdate = filter_var($request->maxdate, FILTER_SANITIZE_STRING);
         $mindate = filter_var($request->mindate, FILTER_SANITIZE_STRING);
         $procedimiento = filter_var($request->procedimiento, FILTER_SANITIZE_STRING);
-        
+
         $detailindicador17_1 = Indicador17::select(
         DB::raw('json_build_object(yearmonth, json_agg(ROUND(monto_adjudicado,2))) as data'))
         ->groupBy('yearmonth')
@@ -30,14 +30,14 @@ class ControllerIndicator17 extends Controller
         $indicador17f=array();
         foreach ($detailindicador17_1 as $key => $value) {
 
-            $value1 = json_decode(json_encode($value['data']),true);  //json_decode($value['data']);
+            $value1 = json_decode(json_encode($value['data']),true);
              array_push($indicador17f ,$value1);
         }
         $json['chartData'] = $indicador17f;
-        $indicador17_1 = json_encode($json,  JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT); 
+        $indicador17_1 = json_encode($json,  JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
 
         return $indicador17_1;
 
-        
+
     }
 }
