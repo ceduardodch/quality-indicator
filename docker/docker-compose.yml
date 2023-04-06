@@ -5,7 +5,7 @@ services:
     container_name: indicadoreslist
     restart: unless-stopped
     ports:
-      - 8000:8000
+      - 443:8000
     networks:
       network:
         ipv4_address: 10.5.0.5
