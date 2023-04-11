@@ -5,25 +5,37 @@ services:
     container_name: indicadoreslist
     restart: unless-stopped
     ports:
-      - 443:8000
+      - 8000:8000
     networks:
-      network:
+      network1:
         ipv4_address: 10.5.0.5
   nginx:
     image: indicadoresfront:latest
     container_name: indicadoresfront
     restart: unless-stopped
     ports:
-      - 80:80
+      - 8080:8080
     volumes:
       - ./:/var/www
     networks:
-      network:
+      network1:
         ipv4_address: 10.5.0.6
-
+  reverseproxy:
+    image: nginx
+    restart: unless-stopped
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx2.conf:/etc/nginx/nginx.confx
+    depends_on:
+      - app
+    networks:
+      network1:
+        ipv4_address: 10.5.0.7
 networks:
-  network:
-    driver: bridge
+  network1:
+    name: sercop
+    external: true
     ipam:
       config:
         - subnet: 10.5.0.0/16
