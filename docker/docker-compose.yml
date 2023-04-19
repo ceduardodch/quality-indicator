@@ -14,7 +14,7 @@ services:
     container_name: indicadoresfront
     restart: unless-stopped
     ports:
-      - 8080:80
+      - 8080:8080
     volumes:
       - ./:/var/www
     networks:
@@ -36,7 +36,4 @@ networks:
   network1:
     name: sercop
     external: true
-    ipam:
-      config:
-        - subnet: 10.5.0.0/16
-          gateway: 10.5.0.1
+
