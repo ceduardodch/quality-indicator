@@ -2,3 +2,6 @@ docker build . --file docker/Dockerfile --tag indicadoreslist
 docker images
 docker run --rm -d -p 8000:8000/tcp -p 9000:9000/tcp indicadoreslist:latest
 docker network create --subnet=10.5.0.0/16 sercop
+
+
+docker system prune -a
